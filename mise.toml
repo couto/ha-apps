@@ -1,0 +1,5 @@
+min_version = "2026.5.3"
+
+[tools]
+# Keep the same version as HUGO_VERSION in docs/Dockerfile.
+hugo-extended = "0.167.0"

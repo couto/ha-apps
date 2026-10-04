@@ -1,0 +1,77 @@
+# Hugo site for the family docs, with the Lotus Docs theme.
+#
+# The content is NOT here: it is the docs/ folder of the ha-config repo
+# (plain Markdown, also readable on GitHub). It is reached through
+# ../content, a link that points at it:
+#   - in the app image, /opt/content -> /homeassistant/docs (HA /config);
+#   - for `mise run docs:serve`, docs/content -> ../ha-config/docs.
+# It is mounted as the `docs` section, so the sidebar shows Alarm, Cameras,
+# Heating and Comfort as groups, and the URLs are /docs/<section>/<page>/.
+#
+# The theme and its Hugo modules are fetched by fetch-modules.sh at the
+# versions and checksums in modules.lock, so no Go toolchain is needed.
+
+# Ingress serves the app under a random path (/api/hassio_ingress/<token>/),
+# so every link must be relative. relativeURLs rewrites the root-relative
+# links in the Markdown (/docs/alarm/modes/) for the page that contains them.
+baseURL = "/"
+relativeURLs = true
+
+title = "Home documentation"
+locale = "en"
+enableEmoji = true
+enableGitInfo = false
+enableRobotsTXT = false
+disableKinds = ["taxonomy", "term", "rss", "sitemap"]
+
+[module]
+  # Local copies (in themesDir) of the modules Hugo would fetch with Go.
+  replacements = "github.com/colinwilson/lotusdocs -> lotusdocs, github.com/gohugoio/hugo-mod-bootstrap-scss/v5 -> hugo-mod-bootstrap-scss, github.com/twbs/bootstrap -> bootstrap, github.com/gohugoio/hugo-mod-jslibs-dist/popperjs/v2 -> popperjs"
+  [module.hugoVersion]
+    extended = true
+  [[module.imports]]
+    path = "github.com/colinwilson/lotusdocs"
+  [[module.imports]]
+    path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+  [[module.mounts]]
+    source = "../content"
+    target = "content/docs"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[params]
+  # No google_fonts: system fonts, nothing loaded from outside.
+  [params.footer]
+    copyright = "Home documentation"
+  [params.docs]
+    title = "Home documentation"
+    darkMode = true
+    prism = false
+    sidebarIcons = false
+    breadcrumbs = true
+    backToTop = true
+    toc = true
+    tocMobile = true
+    scrollSpy = true
+    descriptions = true
+    navDesc = true
+    intLinkTooltip = false
+    editPage = false
+    lastMod = false
+  [params.flexsearch]
+    enabled = true
+  # Report links that point at no page (see layouts/docs/_markup/render-link.html).
+  [params.render_hooks.link]
+    errorLevel = "warning"
+
+[[menu.primary]]
+  name = "Docs"
+  url = "docs/"
+  identifier = "docs"
+  weight = 10

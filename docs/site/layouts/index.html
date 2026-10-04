@@ -1,0 +1,15 @@
+{{- /* The site root only forwards to the docs. Lotus Docs' landing page
+       (hero, features, call to action) does not fit a family docs site;
+       the docs home (docs/_index.md, at docs/) is the way in. The link is
+       relative so it works under the HA ingress path. */ -}}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=docs/">
+  <title>{{ site.Title }}</title>
+</head>
+<body>
+  <a href="docs/">{{ site.Title }}</a>
+</body>
+</html>

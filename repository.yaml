@@ -1,0 +1,5 @@
+# Home Assistant app repository. Add its URL in Settings > Apps > App store
+# > ⋮ > Repositories to install the apps in this folder.
+name: Couto Home Assistant apps
+url: https://github.com/couto/ha-apps
+maintainer: Luis Couto

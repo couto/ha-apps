@@ -1,0 +1,8 @@
+# Docs site: fetched theme and modules, build output, generated files,
+# and the local link to the content (created by `mise run docs:serve`)
+docs/site/themes/
+docs/site/public/
+docs/site/resources/
+docs/content
+.hugo_build.lock
+.DS_Store

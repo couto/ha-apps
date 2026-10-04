@@ -1,0 +1,8 @@
+# The Lotus Docs theme and the Hugo modules it imports, pinned with their
+# SHA-256. fetch-modules.sh downloads them into the themes folder, where
+# the `replacements` in hugo.toml point. One line per module:
+#   <folder> <sha256 of the .tar.gz> <url> [<subfolder in the archive>]
+lotusdocs 9c475cea37505610321bb0d2906e21ff5dee388a41fd1c90c24f3fd3bb0730fd https://github.com/colinwilson/lotusdocs/archive/refs/tags/v0.3.0.tar.gz
+hugo-mod-bootstrap-scss bf8ac33a2a6d0525e6f51018c0bafe37556fb50e24e431c9d543ed4a5a4c8937 https://github.com/gohugoio/hugo-mod-bootstrap-scss/archive/refs/tags/v5.20300.20800.tar.gz
+bootstrap e48d2bb45df830b6f70e2fb5a592f07f8f892dcbd3eb33245a48593cc59aa6dd https://github.com/twbs/bootstrap/archive/refs/tags/v5.3.8.tar.gz
+popperjs baba72cf8a2790936ccfd9efdea391f6a8e42539bee119fa3631cd1b99ce07a7 https://github.com/gohugoio/hugo-mod-jslibs-dist/archive/refs/tags/popperjs/v2.21100.20000.tar.gz popperjs
