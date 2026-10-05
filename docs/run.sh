@@ -9,6 +9,8 @@
 # copying new docs to the host is enough.
 # --poll: the files change in another container (Samba, SSH); polling does
 # not depend on inotify events crossing the bind mount.
+# --noHTTPCache: hugo server sends only Last-Modified, so browsers kept
+# showing pages from the previous version after an update.
 set -e
 
 if ! bashio::fs.directory_exists /homeassistant/docs; then
@@ -25,6 +27,7 @@ exec hugo server \
   --noBuildLock \
   --renderToMemory \
   --disableLiveReload \
+  --noHTTPCache \
   --poll 10s \
   --bind 0.0.0.0 \
   --port 8099 \
