@@ -1,0 +1,29 @@
+{{- /* OVERRIDE of Lotus Docs v0.3.0 layouts/docs/list.html (ha-apps).
+       The theme's section page shows only a card per child page and drops
+       the section's own text (.Content). Our _index.md pages carry the
+       overview, the flow diagram and the "does / does not" table, and
+       each ends with its own "Pages in this section" table, so a section
+       page renders like a normal page: the body, then Mermaid if needed
+       (same as the theme's single.html). */ -}}
+{{ define "main" }}
+    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+        {{ .Content }}
+    </div>
+
+    {{ if .Page.Store.Get "hasMermaid" }}
+    {{ $mermaid := resources.Get (printf "%s/%s" ($.Scratch.Get "pathName") "js/mermaid.min.js") }}
+    {{ if hugo.IsProduction }}
+        {{ $mermaid = $mermaid | fingerprint "sha384" }}
+    {{ end }}
+    <script src="{{ $mermaid.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $mermaid.Data.Integrity }}"{{ end }}></script>
+    <script>
+        const config = {
+            startOnLoad:true,
+            logLevel: "error",
+            align: "center",
+            theme:"null"
+        };
+        mermaid.initialize(config);
+    </script>
+    {{ end }}
+{{ end }}
