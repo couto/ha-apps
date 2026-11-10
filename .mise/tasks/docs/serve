@@ -2,14 +2,14 @@
 #MISE description="Preview the Docs app's site at http://localhost:1313/docs/"
 #
 # The same Lotus Docs site the "Docs" app serves on the host. The content
-# is the docs/ folder of ha-config (DOCS_DIR, default ../ha-config/docs),
+# is the docs/ folder of ha-config, the clone at ../casa/ha (DOCS_DIR, default ../casa/ha/docs),
 # linked at docs/content (git-ignored), the path hugo.toml mounts. The
 # theme and its Hugo modules are fetched into docs/site/themes/
 # (git-ignored) from docs/site/modules.lock, so no Go toolchain is needed.
 set -euo pipefail
 
 root="${MISE_PROJECT_ROOT:-$(git rev-parse --show-toplevel)}"
-docs_dir="${DOCS_DIR:-$root/../ha-config/docs}"
+docs_dir="${DOCS_DIR:-$root/../casa/ha/docs}"
 if [[ ! -d "$docs_dir" ]]; then
   echo "No docs folder at $docs_dir. Set DOCS_DIR." >&2
   exit 1

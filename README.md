@@ -20,6 +20,6 @@ mise trust
 mise run docs:serve        # http://localhost:1313/docs/
 ```
 
-It reads the Markdown from `../ha-config/docs`. Set `DOCS_DIR` to use
+It reads the Markdown from `../casa/ha/docs`, the ha-config clone inside the casa workspace. Set `DOCS_DIR` to use
 another folder. Hugo comes from `mise.toml`; the theme and its Hugo
 modules are fetched from `docs/site/modules.lock` (no Go, no npm).

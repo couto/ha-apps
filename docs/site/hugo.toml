@@ -4,7 +4,7 @@
 # (plain Markdown, also readable on GitHub). It is reached through
 # ../content, a link that points at it:
 #   - in the app image, /opt/content -> /homeassistant/docs (HA /config);
-#   - for `mise run docs:serve`, docs/content -> ../ha-config/docs.
+#   - for `mise run docs:serve`, docs/content -> ../casa/ha/docs.
 # It is mounted as the `docs` section, so the sidebar shows Alarm, Cameras,
 # Heating and Comfort as groups, and the URLs are /docs/<section>/<page>/.
 #
